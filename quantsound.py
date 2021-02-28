@@ -317,6 +317,21 @@ class Music(commands.Cog):
         embed.set_footer(text = "supports by quantsound")
         await ctx.send(embed = embed)
     
+    @commands.command(name = 'donate')
+    async def _donate(self, ctx: commands.Context):
+        author = ctx.message.author
+        embed = discord.Embed(description = f"Hi {author.mention}, I'm really glad you stopped by!\n"
+                                            'Our bot is free for the Discord community, but our team will be grateful '
+                                            'to you for donating absolutely any amount to the further development of **quantsound**\n\n'
+                                            'Payment is available on several e-wallets:\n'
+                                            f'• [QIWI]({qiwi_url}),\n'
+                                            f'• [ЮMoney]({yoomoney_url}),\n\n'
+                                            '*Paypal* and *Webmoney* will also be available soon...\n\n'
+                                            'Thank you for choosing us! \n🤍', color = 0xbc03ff)
+        embed.set_author(name = "The donations page", icon_url = "https://bit.ly/39w96yc")
+        embed.set_footer(text = "supports by quantsound")
+        await ctx.send(embed = embed)
+        
     @commands.command(name = 'summon')
     async def _summon(self, ctx: commands.Context, *, channel: discord.VoiceChannel = None):
 
