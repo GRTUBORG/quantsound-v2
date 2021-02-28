@@ -309,9 +309,9 @@ class Music(commands.Cog):
                             f'• `{prefix}pause` пауза текущей песни;\n'
                             f'• `{prefix}resume` воспроизведение;\n'
                             f'• `{prefix}stop` (синонимы: `{prefix}leave`) полная остановка очереди с её очисткой;\n'
-                            f'• `{prefix}author` вся информация об авторах quantsound (**Временно удалена**);\n'
+                            f'• `{prefix}author` вся информация об авторах quantsound;\n'
                             f'• `{prefix}donate` поддержка разработчика quantsound;\n'
-                            f'• `{prefix}servers` показать количество серверов на которых установлен бот. Работает только на домашнем сервере (**Временно удалена**).\n\n\n'
+                            f'• `{prefix}servers` показать количество серверов на которых установлен бот. Работает только на домашнем сервере.\n\n\n'
                             '[Invite quantsound](https://discord.com/oauth2/authorize?client_id=795312210343624724&permissions=8&scope=bot) | [Support server](https://discord.gg/MFGmBFjgXu)', color = 0xbc03ff)
         embed.set_author(name = "Quantsound Support", icon_url = "https://bit.ly/39w96yc")
         embed.set_footer(text = "supports by quantsound")
