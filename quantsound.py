@@ -418,8 +418,6 @@ class Music(commands.Cog):
 
         ctx.voice_state.songs.remove(index - 1)
         await ctx.message.add_reaction('✅')
-    @commands.command(name = 'help', aliases = ['p'])
-    async def _help(self, ctx: commands.Context):
 
     @commands.command(name = 'play', aliases = ['p'])
     async def _play(self, ctx: commands.Context, *, search: str):
