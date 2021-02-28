@@ -12,7 +12,16 @@ from discord.ext import commands
 from asyncio import sleep
 
 youtube_dl.utils.bug_reports_message = lambda: ''
+yoomoney_url = os.environ.get('yoomoney_url')
+qiwi_url = os.environ.get('qiwi_url')
+vk_page = os.environ.get('vk_page')
+count_servers = os.environ.get('count_servers')
+update = os.environ.get('update')
+token = os.environ.get('bot_token')
+prefix = 'qs!'
 
+bot = commands.Bot(command_prefix = prefix)
+bot.remove_command('help')
 
 class VoiceError(Exception):
     pass
@@ -288,7 +297,26 @@ class Music(commands.Cog):
             return
 
         ctx.voice_state.voice = await destination.connect()
-
+    
+    @commands.command(name = 'help')
+    async def _help(self, ctx: commands.Context):
+        author = ctx.message.author
+        embed = discord.Embed(description = f'**Hello, {author.mention}! List of all commands:**\n'
+                            f'• `{prefix}help` outputs the help command;\n'
+                            f'• `{prefix}play` (aliases: `{prefix}p`) playback songs/streams. Arguments: the query or the reference, '
+                            f'the list of services is available by the command `{prefix}help_play`;\n'
+                            f'• `{prefix}radio` playing the radio. The radio list is available by command: `{prefix}help_radio`;\n'
+                            f'• `{prefix}volume` changing the volume. Arguments: integer from 0 to 100;\n'
+                            f'• `{prefix}pause` pause the current playback;\n'
+                            f'• `{prefix}resume` continue playing;\n'
+                            f'• `{prefix}stop` (aliases: `{prefix}leave`) full stop of playback with subsequent disconnection of the bot from the voice channel;\n'
+                            f'• `{prefix}author` all information about the authors of quantsound;\n'
+                            f'• `{prefix}donate` assistance to developers of the bot;\n'
+                            f'• `{prefix}servers` find out information about servers. It works only on the home server and displays the number of servers on which the bot is installed.\n\n\n'
+                            '[Invite quantsound](https://discord.com/oauth2/authorize?client_id=795312210343624724&permissions=8&scope=bot) | [Support server](https://discord.gg/MFGmBFjgXu)', color = 0xbc03ff)
+        embed.set_author(name = "Quantsound Support", icon_url = "https://bit.ly/39w96yc")
+        embed.set_footer(text = "supports by quantsound")
+        await ctx.send(embed = embed)
     
     @commands.command(name = 'summon')
     async def _summon(self, ctx: commands.Context, *, channel: discord.VoiceChannel = None):
@@ -442,18 +470,7 @@ class Music(commands.Cog):
             if ctx.voice_client.channel != ctx.author.voice.channel:
                 raise commands.CommandError('Бот уже находится в голосовом канале.')
 
-
-yoomoney_url = os.environ.get('yoomoney_url')
-qiwi_url = os.environ.get('qiwi_url')
-vk_page = os.environ.get('vk_page')
-count_servers = os.environ.get('count_servers')
-update = os.environ.get('update')
-token = os.environ.get('bot_token')
-prefix = 'qs!'
-
-bot = commands.Bot(command_prefix = prefix)
 bot.add_cog(Music(bot))
-bot.remove_command('help')
 
 @bot.event
 async def on_ready():
