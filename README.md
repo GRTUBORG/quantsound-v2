@@ -1,6 +1,6 @@
 [![Discord Bots](https://top.gg/api/widget/795312210343624724.svg)](https://top.gg/bot/795312210343624724)   
 
-# INFORMATION ABOUT QUANTSOUND 🤖  
+# INFORMATION ABOUT QUANTSOUND v2 🤖  
 [![forks](https://img.shields.io/github/forks/GRTUBORG/quantprod)](https://github.com/GRTUBORG/quantprod/network/members)
 [![Discord](https://img.shields.io/discord/526097247285280768)](https://discord.gg/rjMDwaB)
 [![Issues](https://img.shields.io/bitbucket/issues/GRTUBORG/quantprod)](https://github.com/GRTUBORG/quantprod/issues)  
