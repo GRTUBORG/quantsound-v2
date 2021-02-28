@@ -331,7 +331,17 @@ class Music(commands.Cog):
         embed.set_author(name = "The donations page", icon_url = "https://bit.ly/39w96yc")
         embed.set_footer(text = "supports by quantsound")
         await ctx.send(embed = embed)
-        
+    
+    @commands.command(name = 'servers')
+    async def _servers(self, ctx: commands.Context):
+        if ctx.guild.id == 526097247285280768:
+            servers = bot.guilds
+            await ctx.send(f'Бот установлен на {len(servers)} серверах')
+        else:
+            message = await ctx.send("You don't have access to this command! \nGo to the bot's home server to use this command!")
+            await asyncio.sleep(5) 
+            await message.delete()
+            
     @commands.command(name = 'summon')
     async def _summon(self, ctx: commands.Context, *, channel: discord.VoiceChannel = None):
 
