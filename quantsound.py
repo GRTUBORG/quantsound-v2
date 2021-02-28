@@ -301,18 +301,17 @@ class Music(commands.Cog):
     @commands.command(name = 'help')
     async def _help(self, ctx: commands.Context):
         author = ctx.message.author
-        embed = discord.Embed(description = f'**Hello, {author.mention}! List of all commands:**\n'
-                            f'• `{prefix}help` outputs the help command;\n'
-                            f'• `{prefix}play` (aliases: `{prefix}p`) playback songs/streams. Arguments: the query or the reference, '
-                            f'the list of services is available by the command `{prefix}help_play`;\n'
-                            f'• `{prefix}radio` playing the radio. The radio list is available by command: `{prefix}help_radio`;\n'
-                            f'• `{prefix}volume` changing the volume. Arguments: integer from 0 to 100;\n'
-                            f'• `{prefix}pause` pause the current playback;\n'
-                            f'• `{prefix}resume` continue playing;\n'
-                            f'• `{prefix}stop` (aliases: `{prefix}leave`) full stop of playback with subsequent disconnection of the bot from the voice channel;\n'
-                            f'• `{prefix}author` all information about the authors of quantsound;\n'
-                            f'• `{prefix}donate` assistance to developers of the bot;\n'
-                            f'• `{prefix}servers` find out information about servers. It works only on the home server and displays the number of servers on which the bot is installed.\n\n\n'
+        embed = discord.Embed(description = f'**Привет, {author.mention}! Список доступных команд:**\n'
+                            f'• `{prefix}help` вызывает текущую команду;\n'
+                            f'• `{prefix}play` (синонимы: `{prefix}p`) команда для проигрывания музыки/стримов;\n'
+                            f'• `{prefix}radio` команда для проигрывания радио. Список радиостанций доступен в команду: `{prefix}help_radio` (**Временно удалена**);\n'
+                            f'• `{prefix}volume` настройка громкости. Аргументы: целое число от 0 до 100;\n'
+                            f'• `{prefix}pause` пауза текущей песни;\n'
+                            f'• `{prefix}resume` воспроизведение;\n'
+                            f'• `{prefix}stop` (синонимы: `{prefix}leave`) полная остановка очереди с её очисткой;\n'
+                            f'• `{prefix}author` вся информация об авторах quantsound (**Временно удалена**);\n'
+                            f'• `{prefix}donate` поддержка разработчика quantsound;\n'
+                            f'• `{prefix}servers` показать количество серверов на которых установлен бот. Работает только на домашнем сервере (**Временно удалена**).\n\n\n'
                             '[Invite quantsound](https://discord.com/oauth2/authorize?client_id=795312210343624724&permissions=8&scope=bot) | [Support server](https://discord.gg/MFGmBFjgXu)', color = 0xbc03ff)
         embed.set_author(name = "Quantsound Support", icon_url = "https://bit.ly/39w96yc")
         embed.set_footer(text = "supports by quantsound")
