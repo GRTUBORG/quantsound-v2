@@ -332,6 +332,16 @@ class Music(commands.Cog):
         embed.set_footer(text = "supports by quantsound")
         await ctx.send(embed = embed)
     
+    @commands.command(name = 'author')
+    async def _author(self, ctx: commands.Context):
+        embed = discord.Embed(title = 'Our team:', description = f'• Developer: **[Dennis]({vk_page})**,\n'
+                                                             '• Developer github: **[GRTUBORG](https://github.com/GRTUBORG)**;\n'
+                                                             '• From giving discord member **[•Satoemari•#3381](https://discord.com/users/394850460420538389)**;\n'
+                                                             '• Our group in VK: **[quantsound](https://vk.com/quantsound_discord)**.',
+                                                             color = 0xbc03ff)
+        embed.set_footer(text = "supports by quantsound")
+        await ctx.send(embed = embed)
+        
     @commands.command(name = 'servers')
     async def _servers(self, ctx: commands.Context):
         if ctx.guild.id == 526097247285280768:
