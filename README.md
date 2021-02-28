@@ -15,7 +15,7 @@ In general, you can also learn the commands from the table below:
 | Command (with the prefix) | Responsible for what? | Arguments |
 |:-:|-|-|
 | `help` | The main command, help for all other commands written in this table | `None` |
-| `play` | Play music from services available in the command `help_play` | URL from twitch, youtube, 1tv, pornhub |
+| `play` | Play music from services available in the command `help_play` | URL youtube |
 | `radio` | Plays available radio stations | The name of the radio station available in the `radio_help` command |
 | `volume` | Setting / adjusting the volume | Percentage value from 1 to 100 |
 | `pause` | Pause the current track | `None` |
