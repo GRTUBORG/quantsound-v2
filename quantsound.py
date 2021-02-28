@@ -486,7 +486,7 @@ class Music(commands.Cog):
         voice_channel = ctx.message.author.voice.channel
         vc = await voice_channel.connect(reconnect = True)
 
-        vc.play(discord.FFmpegPCMAudio(executable = "/usr/bin/ffmpeg", source = source, **ffmpeg_radio))
+        vc.play(discord.FFmpegPCMAudio(executable = "/app/vendor/ffmpeg/ffmpeg", source = source, **ffmpeg_radio))
         vc.source = discord.PCMVolumeTransformer(vc.source)
         vc.source.volume = volume
         
