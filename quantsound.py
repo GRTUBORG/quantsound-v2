@@ -308,7 +308,15 @@ class Music(commands.Cog):
                             f'• `{prefix}volume` настройка громкости. Аргументы: целое число от 0 до 100;\n'
                             f'• `{prefix}pause` пауза текущей песни;\n'
                             f'• `{prefix}resume` воспроизведение;\n'
-                            f'• `{prefix}stop` (синонимы: `{prefix}leave`) полная остановка очереди с её очисткой;\n'
+                            f'• `{prefix}stop` полная остановка очереди с её очисткой;\n'
+                            f'• `{prefix}summon` перекидывание бота в нужный вам канал;\n'
+                            f'• `{prefix}join` идентична {prefix}play, только не имеет аргументов и просто говорит боту о подключении к вам;\n'
+                            f'• `{prefix}leave` кикает бота из голосового канала;\n'
+                            f'• `{prefix}now` вывод текущей песни;\n'
+                            f'• `{prefix}queue` показывает всю очередь;\n'
+                            f'• `{prefix}skip` переключение песни в очереди на следующую;\n'
+                            f'• `{prefix}shuffle` перемешать всю очередь;\n'
+                            f'• `{prefix}remove` удалить песню из очереди. Аргументы: номер песни в очереди в виде целого числа;\n'
                             f'• `{prefix}author` вся информация об авторах quantsound;\n'
                             f'• `{prefix}donate` поддержка разработчика quantsound;\n'
                             f'• `{prefix}servers` показать количество серверов на которых установлен бот. Работает только на домашнем сервере.\n\n\n'
@@ -419,7 +427,7 @@ class Music(commands.Cog):
 
         if not ctx.voice_state.is_playing:
             return await ctx.send('Сейчас никакая музыка не проигрывается...')
-
+        
         voter = ctx.message.author
         if voter == ctx.voice_state.current.requester:
             await ctx.message.add_reaction('⏭')
