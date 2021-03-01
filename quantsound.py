@@ -677,9 +677,12 @@ class Music(commands.Cog):
             else:
                 
                 song = Song(source)
-                print(len(song))
-                await ctx.voice_state.songs.put(song)
-                await ctx.send('Добавил в очередь: {}'.format(str(source)))
+                if len(ctx.voice_state.songs) == 0:
+                    await ctx.send('Настраиваюсь на воспроизведение {}'.format(str(source)))
+                    await ctx.voice_state.songs.put(song)
+                else:
+                    await ctx.voice_state.songs.put(song)
+                    await ctx.send('Добавил в очередь: {}'.format(str(source)))
 
     @_join.before_invoke
     @_play.before_invoke
