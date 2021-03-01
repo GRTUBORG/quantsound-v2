@@ -678,7 +678,6 @@ class Music(commands.Cog):
                 
                 song = Song(source)
                 if len(ctx.voice_state.songs) == 0:
-                    await ctx.send('Настраиваюсь на воспроизведение {}'.format(str(source)))
                     await ctx.voice_state.songs.put(song)
                 else:
                     await ctx.voice_state.songs.put(song)
