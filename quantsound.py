@@ -285,7 +285,7 @@ class Music(commands.Cog):
 
     def cog_check(self, ctx: commands.Context):
         if not ctx.guild:
-            raise commands.NoPrivateMessage('Эта команда не может быть использована в каналах DM.')
+            raise commands.NoPrivateMessage('Эта команда не может быть использована в личных чатах!.')
 
         return True
 
@@ -328,7 +328,7 @@ class Music(commands.Cog):
                             f'• `{prefix}author` вся информация об авторах quantsound;\n'
                             f'• `{prefix}donate` поддержка разработчика quantsound;\n'
                             f'• `{prefix}servers` показать количество серверов на которых установлен бот. Работает только на домашнем сервере.\n\n\n'
-                            '[Пригласить quantsound](https://discord.com/oauth2/authorize?client_id=795312210343624724&permissions=8&scope=bot) | [Домашний сервер](https://discord.gg/MFGmBFjgXu)', color = 0xbc03ff)
+                            '[Пригласить quantsound](https://discord.com/oauth2/authorize?client_id=795312210343624724&permissions=8&scope=bot) | [Домашний сервер](https://discord.gg/MFGmBFjgXu) | [Мы на top.gg](https://top.gg/bot/795312210343624724)' , color = 0xbc03ff)
         embed.set_author(name = "Quantsound support", icon_url = "https://bit.ly/39w96yc")
         embed.set_footer(text = "supports by quantsound")
         await ctx.send(embed = embed)
@@ -512,7 +512,7 @@ class Music(commands.Cog):
             voice_channel = ctx.message.author.voice.channel
             voice = get(bot.voice_clients, guild = ctx.guild)
         except:
-            message = await ctx.send(f"{author.mention}, you're not connected to the voice channel!")
+            message = await ctx.send(f"{author.mention}, вы не подключены к голосовому каналу!")
             await asyncio.sleep(5)
             await message.delete()
             
@@ -525,7 +525,7 @@ class Music(commands.Cog):
                 
             await ctx.voice_client.disconnect()
         else:
-            message = await ctx.send("I'm not connected to the channel!")
+            message = await ctx.send("Я не подключен к каналу!")
             await asyncio.sleep(5)
             await message.delete()    
     
@@ -535,7 +535,7 @@ class Music(commands.Cog):
             servers = bot.guilds
             await ctx.send(f'Бот установлен на {len(servers)} серверах')
         else:
-            message = await ctx.send("You don't have access to this command! \nGo to the bot's home server to use this command!")
+            message = await ctx.send("У вас нет доступа к этой команде! \nПерейдите на домашний сервер бота, чтобы использовать данную команду!")
             await asyncio.sleep(5) 
             await message.delete()
             
@@ -673,11 +673,11 @@ class Music(commands.Cog):
             try:
                 source = await YTDLSource.create_source(ctx, search, loop = self.bot.loop)
             except YTDLError as e:
-                await ctx.send('При обработке этого запроса произошла ошибка: {}'.format(str(e)))
+                await ctx.send('При обработке этого запроса произошла ошибка: {}. Повторите через несколько секунд!'.format(str(e)))
             else:
                 
                 song = Song(source)
-
+                print(len(song)
                 await ctx.voice_state.songs.put(song)
                 await ctx.send('Добавил в очередь: {}'.format(str(source)))
 
