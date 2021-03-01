@@ -31,7 +31,13 @@ class VoiceError(Exception):
 class YTDLError(Exception):
     pass
 
+help_message = (':radio: **total radio stations:** `13`'
+                '\n**• [Europe +](https://europaplus.ru)** (different), \n**• [Radio Energy](https://www.energyfm.ru)** (different), \n**• [West coast](http://the-radio.ru/radio/pvpjamz-west-coast-r637)** (rap), \n**• [CORE RADIO](https://coreradio.ru)** (rock), '
+                '\n**• [Phonk](https://101.ru/radio/user/865080)** (memphis rap), \n**• [Record](https://www.radiorecord.ru)** (different),'
+                '\n**• [Record Deep](https://www.radiorecord.ru/station/deep)** (deep house), \n**• [Record Pirate Station](https://www.radiorecord.ru)** (drum and bass), \n**• [Record Black Rap](https://www.radiorecord.ru)** (rap), '
+                '\n**• [Record Rock](https://www.radiorecord.ru)** (rock), \n**• [Record Trap](https://www.radiorecord.ru)** (trap), \n**• [Record Dubstep](https://www.radiorecord.ru)** (dubstep), \n**• [Record Rave FM](https://www.radiorecord.ru)** (rave)')
 ffmpeg_radio = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
+
 class YTDLSource(discord.PCMVolumeTransformer):
     YTDL_OPTIONS = {
         'format': 'bestaudio/best',
@@ -305,14 +311,14 @@ class Music(commands.Cog):
         embed = discord.Embed(description = f'**Привет, {author.mention}! Список доступных команд:**\n'
                             f'• `{prefix}help` вызывает текущую команду;\n'
                             f'• `{prefix}play` (синонимы: `{prefix}p`) команда для проигрывания музыки/стримов;\n'
-                            f'• `{prefix}radio` команда для проигрывания радио. Список радиостанций доступен в команду: `{prefix}help_radio` (**Временно удалена**);\n'
+                            f'• `{prefix}radio` команда для проигрывания радио. Список радиостанций доступен в команду: `{prefix}help_radio`;\n'
                             f'• `{prefix}volume` настройка громкости. Аргументы: целое число от 0 до 100;\n'
                             f'• `{prefix}pause` пауза текущей песни;\n'
                             f'• `{prefix}resume` воспроизведение;\n'
                             f'• `{prefix}stop` полная остановка очереди с её очисткой;\n'
                             f'• `{prefix}summon` перекидывание бота в нужный вам канал;\n'
                             f'• `{prefix}join` идентична `{prefix}play`, только не имеет аргументов и просто говорит боту о подключении к вам;\n'
-                            f'• `{prefix}leave` кикает бота из голосового канала. Не работает для радио!;\n'
+                            f'• `{prefix}leave` кикает бота из голосового канала. **Не работает для радио!**;\n'
                             f'• `{prefix}leave_radio` кикает бота из голосового канала, если включено радио;\n'
                             f'• `{prefix}now` вывод текущей песни;\n'
                             f'• `{prefix}queue` показывает всю очередь;\n'
@@ -322,8 +328,8 @@ class Music(commands.Cog):
                             f'• `{prefix}author` вся информация об авторах quantsound;\n'
                             f'• `{prefix}donate` поддержка разработчика quantsound;\n'
                             f'• `{prefix}servers` показать количество серверов на которых установлен бот. Работает только на домашнем сервере.\n\n\n'
-                            '[Invite quantsound](https://discord.com/oauth2/authorize?client_id=795312210343624724&permissions=8&scope=bot) | [Support server](https://discord.gg/MFGmBFjgXu)', color = 0xbc03ff)
-        embed.set_author(name = "Quantsound Support", icon_url = "https://bit.ly/39w96yc")
+                            '[Пригласить quantsound](https://discord.com/oauth2/authorize?client_id=795312210343624724&permissions=8&scope=bot) | [Домашний сервер](https://discord.gg/MFGmBFjgXu)', color = 0xbc03ff)
+        embed.set_author(name = "Quantsound support", icon_url = "https://bit.ly/39w96yc")
         embed.set_footer(text = "supports by quantsound")
         await ctx.send(embed = embed)
     
@@ -351,6 +357,14 @@ class Music(commands.Cog):
                                                              color = 0xbc03ff)
         embed.set_footer(text = "supports by quantsound")
         await ctx.send(embed = embed)
+    
+    @commands.command(name = 'help_radio')
+    async def _help_radio(self, ctx: commands.Context):
+        embed = discord.Embed(title = 'List of available radio stations', description = help_message)
+        embed.set_footer(text = "supports by quantsound")
+        message = await ctx.send(embed = embed)
+        await asyncio.sleep(45)
+        await message.delete()
     
     @commands.command(name = 'radio', aliases = ['r'])
     async def _radio(self, ctx, *, name, volume = 0.6):
