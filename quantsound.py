@@ -677,7 +677,7 @@ class Music(commands.Cog):
             else:
                 
                 song = Song(source)
-                print(len(song)
+                print(len(song))
                 await ctx.voice_state.songs.put(song)
                 await ctx.send('Добавил в очередь: {}'.format(str(source)))
 
