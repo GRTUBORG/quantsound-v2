@@ -162,6 +162,15 @@ class Song:
                  .set_footer(text = "supports by quantsound"))
 
         return embed
+    
+    def now_embed(self):
+        embed = (discord.Embed(title = 'Сейчас играет:',
+                               description = '```css\n[YOUTUBE 🎬] [{0.source.title}]({0.source.url}) ({0.source.duration})```'.format(self),
+                               color = 0xbc03ff)
+                 .set_thumbnail(url = self.source.thumbnail)
+                 .set_footer(text = "supports by quantsound"))
+
+        return embed
 
 
 class SongQueue(asyncio.Queue):
@@ -320,7 +329,7 @@ class Music(commands.Cog):
                             f'• `{prefix}join` идентична `{prefix}play`, не имеет аргументов и просто говорит боту о подключении к вам;\n'
                             f'• `{prefix}leave` кикнуть бота из голосового канала. **Не работает для радио!**\n'
                             f'• `{prefix}leave_radio` кикнуть бота из голосового канала, если включено радио;\n'
-                            f'• `{prefix}now` вывести текущую песню;\n'
+                            f'• `{prefix}now` (синонимы: `{prefix}current`, `{prefix}playing`) вывести текущую песню; \n'
                             f'• `{prefix}queue` показать всю очередь;\n'
                             f'• `{prefix}skip` переключить песню в очереди на следующую;\n'
                             f'• `{prefix}shuffle` перемешать всю очередь;\n'
@@ -576,7 +585,7 @@ class Music(commands.Cog):
     @commands.command(name = 'now', aliases = ['current', 'playing'])
     async def _now(self, ctx: commands.Context):
 
-        await ctx.send(embed = ctx.voice_state.current.create_embed())
+        await ctx.send(embed = ctx.voice_state.current.now_embed())
 
     @commands.command(name = 'pause')
     async def _pause(self, ctx: commands.Context):
