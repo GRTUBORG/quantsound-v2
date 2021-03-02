@@ -619,7 +619,7 @@ class Music(commands.Cog):
     async def _skip(self, ctx: commands.Context):
 
         if not ctx.voice_state.is_playing:
-            return await ctx.send('Сейчас никакая музыка не проигрывается...')
+            return await ctx.send('Сейчас никакая музыка не играет...')
         
         voter = ctx.message.author
         if voter == ctx.voice_state.current.requester:
@@ -688,15 +688,11 @@ class Music(commands.Cog):
                 source = await YTDLSource.create_source(ctx, search, loop = self.bot.loop)
             except YTDLError as e:
                 await ctx.send('При обработке этого запроса произошла ошибка: {}. Повторите через несколько секунд!'.format(str(e)))
-            else:
-                print(len(ctx.voice_state.songs))
-                
+            else:                
                 song = Song(source)
-                if len(ctx.voice_state.songs) == 0:
-                    await ctx.voice_state.songs.put(song)
-                else:
-                    await ctx.voice_state.songs.put(song)
-                    return await ctx.send('Добавил в очередь: {}'.format(str(source)))
+                
+                await ctx.voice_state.songs.put(song)
+                await ctx.send('Добавил в очередь: {}'.format(str(source)))
 
     @_join.before_invoke
     @_play.before_invoke
