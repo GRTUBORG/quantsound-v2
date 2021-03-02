@@ -171,7 +171,7 @@ class Song:
     
     def now_embed(self):
         embed = (discord.Embed(title = 'Сейчас играет:',
-                               description = '```css\n[YOUTUBE 🎬] [{0.source.title}]({0.source.url}) ({0.source.duration})```'.format(self),
+                               description = '```css\n[YOUTUBE 🎬] {0.source.title}. \nПродолжительность: {0.source.duration}```'.format(self),
                                color = 0xbc03ff)
                  .set_thumbnail(url = self.source.thumbnail)
                  .set_footer(text = "supports by quantsound"))
