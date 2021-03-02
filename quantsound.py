@@ -20,6 +20,7 @@ count_servers = os.environ.get('count_servers')
 update = os.environ.get('update')
 token = os.environ.get('bot_token')
 prefix = 'qs!'
+os.system('pip install -U youtube-dl')
 
 bot = commands.Bot(command_prefix = prefix)
 bot.remove_command('help')
