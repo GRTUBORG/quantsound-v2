@@ -22,7 +22,6 @@ token = os.environ.get('bot_token')
 prefix = 'qs!'
 username = os.environ.get('username')
 password = os.environ.get('password')
-
 os.system('pip install -U youtube-dl')
 
 bot = commands.Bot(command_prefix = prefix)
@@ -171,7 +170,7 @@ class Song:
     
     def now_embed(self):
         embed = (discord.Embed(title = 'Сейчас играет:',
-                               description = '```css\n[YOUTUBE 🎬] {0.source.title}. \nПродолжительность: {0.source.duration}```'.format(self),
+                               description = '```css\n[YOUTUBE 🎬] {0.source.title} \nПродолжительность: {0.source.duration}```'.format(self),
                                color = 0xbc03ff)
                  .set_thumbnail(url = self.source.thumbnail)
                  .set_footer(text = "supports by quantsound"))
@@ -690,13 +689,14 @@ class Music(commands.Cog):
             except YTDLError as e:
                 await ctx.send('При обработке этого запроса произошла ошибка: {}. Повторите через несколько секунд!'.format(str(e)))
             else:
+                print(len(ctx.voice_state.songs))
                 
                 song = Song(source)
                 if len(ctx.voice_state.songs) == 0:
                     await ctx.voice_state.songs.put(song)
                 else:
                     await ctx.voice_state.songs.put(song)
-                    await ctx.send('Добавил в очередь: {}'.format(str(source)))
+                    return await ctx.send('Добавил в очередь: {}'.format(str(source)))
 
     @_join.before_invoke
     @_play.before_invoke
