@@ -20,6 +20,9 @@ count_servers = os.environ.get('count_servers')
 update = os.environ.get('update')
 token = os.environ.get('bot_token')
 prefix = 'qs!'
+username = os.environ.get('username')
+password = os.environ.get('password')
+
 os.system('pip install -U youtube-dl')
 
 bot = commands.Bot(command_prefix = prefix)
@@ -54,6 +57,8 @@ class YTDLSource(discord.PCMVolumeTransformer):
         'no_warnings': True,
         'default_search': 'auto',
         'source_address': '0.0.0.0',
+        'username': username,
+        'password': password
     }
 
     FFMPEG_OPTIONS = {
